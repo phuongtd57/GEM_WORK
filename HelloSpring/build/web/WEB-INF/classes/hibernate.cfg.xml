@@ -6,6 +6,10 @@
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/users</property>
     <property name="hibernate.connection.username">root</property>
+    <mapping resource="model/Units.hbm.xml"/>
     <mapping resource="model/User.hbm.xml"/>
+    <mapping resource="model/Inventorys.hbm.xml"/>
+    <mapping resource="model/Dealers.hbm.xml"/>
+    <mapping resource="model/UnitDealer.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
