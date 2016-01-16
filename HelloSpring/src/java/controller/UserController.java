@@ -2,6 +2,7 @@ package controller;
 
 import java.util.List;
 import model.HibernateUtil;
+import model.Units;
 import model.User;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
@@ -21,11 +22,11 @@ public class UserController {
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            List<User> list = session.createQuery("from User").list();
+            List<Units> list = session.createQuery("from Units").list();
             
             session.getTransaction().commit();
             
-            mp.addAttribute("users", list);
+            mp.addAttribute("units", list);
         }catch(Exception e){
             e.printStackTrace();
         }

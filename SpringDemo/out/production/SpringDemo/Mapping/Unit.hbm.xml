@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Entities.Unit" table="units">
+        <id name="unitId" type="java.lang.Integer">
+            <column name="unit_id"></column>
+            <generator class="identity"></generator>
+        </id>
+        <property name="type" type="java.lang.String">
+            <column name="type" not-null="true"></column>
+        </property>
+        <property name="isPart" type="java.lang.Integer">
+            <column name="is_part" not-null="true"></column>
+        </property>
+        <many-to-one name="unit" class="Entities.Unit" fetch="select">
+            <column name="part_of"></column>
+        </many-to-one>
+        <set name="unitDealers" lazy="true" inverse="true" fetch="select">
+            <key column="unit_id" not-null="true"></key>
+            <one-to-many class="Entities.UnitDealer"></one-to-many>
+        </set>
+
+        <set name="units" lazy="true" inverse="true" fetch="select">
+            <key column="part_of"></key>
+            <one-to-many class="Entities.Unit"></one-to-many>
+        </set>
+    </class>
+
+</hibernate-mapping>

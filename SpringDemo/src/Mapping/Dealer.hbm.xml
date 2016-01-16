@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Entities.Dealer" table="dealers">
+            <id name="dealerId" type="java.lang.Integer">
+                <column name="dealer_id"></column>
+                <generator class="identity"></generator>
+            </id>
+            <property name="name" type="java.lang.String">
+                <column name="name" not-null="true"></column>
+            </property>
+            <property name="address" type="java.lang.String">
+                <column name="address" not-null="true"></column>
+            </property>
+
+            <set name="inventorys" lazy="true" inverse="true" fetch="select">
+                <key column="dealer_id" not-null="true"></key>
+                <one-to-many class="Entities.Inventory"></one-to-many>
+            </set>
+
+            <set name="unitDealers" lazy="true" inverse="true" fetch="select">
+                <key column="dealer_id" not-null="true"></key>
+                <one-to-many class="Entities.UnitDealer"></one-to-many>
+            </set>
+
+
+    </class>
+
+
+</hibernate-mapping>

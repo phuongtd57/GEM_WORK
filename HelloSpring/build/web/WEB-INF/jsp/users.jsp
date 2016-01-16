@@ -15,8 +15,8 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <c:forEach var="u" items="${users}">
-            Username: ${u.username} <br>
+        <c:forEach var="u" items="${units}">
+            Username: ${u.type} <br>
         </c:forEach>
     </body>
 </html>
