@@ -24,7 +24,6 @@
                 <one-to-many class="Entities.UnitDealer"></one-to-many>
             </set>
 
-
     </class>
 
 
