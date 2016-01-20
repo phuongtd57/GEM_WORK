@@ -2,7 +2,6 @@ package com.gem.nhom1.dao.impl;
 
 import com.gem.nhom1.dao.DealerDao;
 import com.gem.nhom1.model.Dealer;
-import com.gem.nhom1.model.User;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +23,7 @@ public class DealerDaoImpl extends AbstractDao<Integer , Dealer> implements Deal
     public Dealer getDealerById(int id) {
         Dealer d = getByKey(id);
         Hibernate.initialize(d.getInventorys());
+        Hibernate.initialize(d.getUnitDealers());
         return d;
     }
 }

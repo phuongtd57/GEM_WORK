@@ -21,5 +21,10 @@
     <c:forEach var="in" items="${ins}">
         Username: ${in.name}  <br>
     </c:forEach>
+<hr>
+    <h3>Danh sach price cua dealer 1</h3>
+    <c:forEach var="ud" items="${uds}">
+        Username: ${ud.price}  <br>
+    </c:forEach>
 </body>
 </html>

@@ -1,9 +1,8 @@
 package com.gem.nhom1.controller;
 
 import com.gem.nhom1.model.Dealer;
-import com.gem.nhom1.model.User;
 import com.gem.nhom1.service.DealerService;
-import com.gem.nhom1.service.UserService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,7 +27,10 @@ public class HomeController {
         mm.addAttribute("dealers"  ,  list);
 
         Dealer d = dealerService.getDealerById(1);
+
         mm.addAttribute("ins"  ,  d.getInventorys());
+
+        mm.addAttribute("uds"  ,  d.getUnitDealers());
         return "xinchao";
     }
 

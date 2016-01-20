@@ -11,16 +11,22 @@ import java.util.Set;
 @Table(name = "dealers")
 public class Dealer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "dealer_id")
     private int dealerId;
 
-
+    @Column(name = "name")
     private String name;
 
-
+    @Column(name = "address")
     private String address;
 
-
+    @OneToMany(cascade = CascadeType.ALL  , mappedBy = "dealer")
     private Set<Inventory> inventorys = new HashSet<Inventory>(0) ;
+
+    @OneToMany(cascade = CascadeType.ALL , mappedBy = "dealer" , fetch = FetchType.LAZY)
+    private Set<UnitDealer> unitDealers = new HashSet<UnitDealer>(0);
 
     public Dealer() {
     }
@@ -35,26 +41,40 @@ public class Dealer {
         this.address = address;
         this.inventorys = inventorys;
     }
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "dealer_id")
+
+    public Dealer(String name, String address, Set<Inventory> inventorys, Set<UnitDealer> unitDealers) {
+        this.name = name;
+        this.address = address;
+        this.inventorys = inventorys;
+        this.unitDealers = unitDealers;
+    }
+
     public int getDealerId() {
         return dealerId;
     }
 
-    @Column(name = "name")
+
     public String getName() {
         return name;
     }
 
-    @Column(name = "address")
+
     public String getAddress() {
         return address;
     }
 
-    @OneToMany(cascade = CascadeType.ALL  , mappedBy = "dealer")
+
     public Set<Inventory> getInventorys() {
         return inventorys;
+    }
+
+
+    public Set<UnitDealer> getUnitDealers() {
+        return unitDealers;
+    }
+
+    public void setUnitDealers(Set<UnitDealer> unitDealers) {
+        this.unitDealers = unitDealers;
     }
 
     public void setDealerId(int dealerId) {
@@ -72,4 +92,8 @@ public class Dealer {
     public void setInventorys(Set<Inventory> inventorys) {
         this.inventorys = inventorys;
     }
+
+
+
+
 }
